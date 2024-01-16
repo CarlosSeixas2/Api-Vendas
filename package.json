@@ -1,0 +1,39 @@
+{
+    "name": "api_vendas",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
+        "lint": "eslint . --ext .ts",
+        "lint-fix": "eslint . --ext .ts --fix",
+        "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
+        "@types/joi": "^17.2.3",
+        "@types/node": "^20.10.8",
+        "@typescript-eslint/eslint-plugin": "^6.18.1",
+        "@typescript-eslint/parser": "^6.18.1",
+        "eslint": "^8.56.0",
+        "eslint-config-prettier": "^6.15.0",
+        "eslint-plugin-prettier": "^3.2.0",
+        "pg": "^8.11.3",
+        "reflect-metadata": "^0.2.1",
+        "ts-node-dev": "^2.0.0",
+        "tsconfig-paths": "^4.2.0",
+        "typeorm": "^0.3.19",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "celebrate": "^15.0.3",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "express-async-errors": "^3.1.1"
+    }
+}
