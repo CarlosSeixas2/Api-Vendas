@@ -6,8 +6,8 @@ interface IRequest {
     id: string;
 }
 
-export default class DeleteProductService {
-    public async execute({ id }: IRequest): Promise<void> {
+const DeleteProductService = {
+    async execute({ id }: IRequest): Promise<void> {
         const product = await ProductRepository.findOne({
             where: { id },
         });
@@ -17,5 +17,7 @@ export default class DeleteProductService {
         }
 
         await ProductRepository.remove(product);
-    }
-}
+    },
+};
+
+export default DeleteProductService;

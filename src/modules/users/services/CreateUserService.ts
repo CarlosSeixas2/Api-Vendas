@@ -8,8 +8,8 @@ interface IRequest {
     password: string;
 }
 
-export default class CreateProductService {
-    public async execute({ name, email, password }: IRequest): Promise<User> {
+const CreateUserService = {
+    async execute({ name, email, password }: IRequest): Promise<User> {
         const emailExists = await UserRepository.findByEmail(email);
 
         if (emailExists) {
@@ -25,5 +25,7 @@ export default class CreateProductService {
         await UserRepository.save(user);
 
         return user;
-    }
-}
+    },
+};
+
+export default CreateUserService;

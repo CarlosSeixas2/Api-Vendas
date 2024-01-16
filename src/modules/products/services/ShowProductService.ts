@@ -6,8 +6,8 @@ interface IRequest {
     id: string;
 }
 
-export default class ShowProductService {
-    public async execute({ id }: IRequest): Promise<Product | null> {
+const ShowProductService = {
+    async execute({ id }: IRequest): Promise<Product | null> {
         const product = await ProductRepository.findOne({
             where: { id },
         });
@@ -17,5 +17,7 @@ export default class ShowProductService {
         }
 
         return product;
-    }
-}
+    },
+};
+
+export default ShowProductService;

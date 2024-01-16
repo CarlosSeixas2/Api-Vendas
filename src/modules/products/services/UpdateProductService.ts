@@ -9,13 +9,8 @@ interface IRequest {
     quantity: number;
 }
 
-export default class UpdateProductService {
-    public async execute({
-        id,
-        name,
-        price,
-        quantity,
-    }: IRequest): Promise<Product> {
+const UpdateProductService = {
+    async execute({ id, name, price, quantity }: IRequest): Promise<Product> {
         const product = await ProductRepository.findOne({
             where: { id },
         });
@@ -37,5 +32,7 @@ export default class UpdateProductService {
         await ProductRepository.save(product);
 
         return product;
-    }
-}
+    },
+};
+
+export default UpdateProductService;
