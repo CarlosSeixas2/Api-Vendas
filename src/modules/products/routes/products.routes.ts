@@ -3,9 +3,8 @@ import ProductsController from '../controllers/ProductsController';
 import { celebrate, Joi, Segments } from 'celebrate';
 
 const productsRouter = Router();
-const productsController = new ProductsController();
 
-productsRouter.get('/', productsController.index);
+productsRouter.get('/', ProductsController.index);
 
 productsRouter.get(
     '/:id',
@@ -14,7 +13,7 @@ productsRouter.get(
             id: Joi.string().uuid().required(),
         },
     }),
-    productsController.show,
+    ProductsController.show,
 );
 
 productsRouter.post(
@@ -26,7 +25,7 @@ productsRouter.post(
             quantity: Joi.number().required(),
         },
     }),
-    productsController.create,
+    ProductsController.create,
 );
 
 productsRouter.put(
@@ -41,7 +40,7 @@ productsRouter.put(
             id: Joi.string().uuid().required(),
         },
     }),
-    productsController.update,
+    ProductsController.update,
 );
 
 productsRouter.delete(
@@ -51,7 +50,7 @@ productsRouter.delete(
             id: Joi.string().uuid().required(),
         },
     }),
-    productsController.delete,
+    ProductsController.delete,
 );
 
 export default productsRouter;
