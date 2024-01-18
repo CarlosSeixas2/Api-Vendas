@@ -7,6 +7,8 @@ const UsersController = {
         try {
             const users = await ListUserService.execute();
 
+            console.log(req.user.id);
+
             return res.json(users);
         } catch (error: any) {
             return res

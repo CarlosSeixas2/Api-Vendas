@@ -3,6 +3,12 @@ import AppError from '@shared/errors/AppError';
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
+interface TokenPayload {
+    iat: number;
+    exp: number;
+    sub: string;
+}
+
 const isAuthenticated = (
     req: Request,
     res: Response,
@@ -18,6 +24,14 @@ const isAuthenticated = (
 
     try {
         const decodedToken = verify(token, authConfig.secret);
+
+        // console.log(decodedToken);
+
+        const { sub } = decodedToken as TokenPayload;
+
+        req.user = {
+            id: sub,
+        };
 
         return next();
     } catch (error) {
