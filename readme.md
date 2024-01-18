@@ -19,3 +19,5 @@
 # npx typeorm migration:create ./src/shared/typeorm/migrations/CreateProducts
 
 # npx typeorm-ts-node-commonjs migration:run -d ./src/shared/typeorm/index.ts
+
+# npx typeorm-ts-node-commonjs migration:revert -d ./src/shared/typeorm/index.ts

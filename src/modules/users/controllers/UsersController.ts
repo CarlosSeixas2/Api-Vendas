@@ -4,21 +4,34 @@ import CreateUserService from '../services/CreateUserService';
 
 const UsersController = {
     async index(req: Request, res: Response): Promise<Response> {
-        const users = await ListUserService.execute();
+        try {
+            const users = await ListUserService.execute();
 
-        return res.json(users);
+            return res.json(users);
+        } catch (error: any) {
+            return res
+                .status(error.statusCode || 400)
+                .json({ error: error.message });
+        }
     },
 
     async create(req: Request, res: Response): Promise<Response> {
-        const { name, email, password } = req.body;
+        try {
+            const { name, email, password, avatar } = req.body;
 
-        const user = CreateUserService.execute({
-            name,
-            email,
-            password,
-        });
+            const user = await CreateUserService.execute({
+                name,
+                email,
+                password,
+                avatar,
+            });
 
-        return res.json(user);
+            return res.json(user);
+        } catch (error: any) {
+            return res
+                .status(error.statusCode || 400)
+                .json({ error: error.message });
+        }
     },
 };
 

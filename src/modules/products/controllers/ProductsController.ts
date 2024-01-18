@@ -7,9 +7,13 @@ import DeleteProductService from '../services/DeleteProductService';
 
 const ProductsController = {
     async index(req: Request, res: Response): Promise<Response> {
-        const products = await ListProductService.execute();
+        try {
+            const products = await ListProductService.execute();
 
-        return res.json(products);
+            return res.json(products);
+        } catch (error) {
+            return res.status(400).json({ error: error });
+        }
     },
 
     async show(req: Request, res: Response): Promise<Response> {
