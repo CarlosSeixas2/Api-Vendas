@@ -3,7 +3,7 @@ import User from '../typeorm/entities/User';
 import { UserRepository } from '../typeorm/repositories/UsersRepository';
 import path from 'path';
 import uploadConfig from '@config/upload';
-import fs from 'fs/promises'; // Import fs.promises directly
+import fs from 'fs/promises';
 
 interface IRequest {
     user_id: string;
