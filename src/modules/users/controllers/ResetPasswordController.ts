@@ -1,12 +1,13 @@
+import AppError from '@shared/errors/AppError';
 import { Request, Response } from 'express';
-import SendForgotPasswordEmailService from '../services/SendForgotPasswordEmailService';
+import ResetPasswordService from '../services/ResetPasswordService';
 
 const ResetPassword = {
     async create(req: Request, res: Response): Promise<Response> {
         try {
-            const { email } = req.body;
+            const { token, password } = req.body;
 
-            await SendForgotPasswordEmailService.execute({ email });
+            await ResetPasswordService.execute({ token, password });
 
             return res.status(204).json();
         } catch (error: any) {
