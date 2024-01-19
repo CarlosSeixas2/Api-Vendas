@@ -7,11 +7,10 @@ interface IRequest {
     name: string;
     email: string;
     password: string;
-    avatar?: string;
 }
 
 const CreateProductService = {
-    async execute({ name, email, password, avatar }: IRequest): Promise<User> {
+    async execute({ name, email, password }: IRequest): Promise<User> {
         const emailExists = await UserRepository.findByEmail(email);
 
         if (emailExists) {
@@ -24,7 +23,6 @@ const CreateProductService = {
             name,
             email,
             password: encryptedPassword,
-            avatar: avatar || 'N/A',
         });
 
         await UserRepository.save(user);

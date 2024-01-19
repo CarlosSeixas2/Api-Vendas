@@ -27,20 +27,17 @@ const UpdateUserAvatarService = {
                 user.avatar,
             );
 
-            try {
-                await fs.stat(userAvatarFilePath);
+            const userAvatarFileExists = await fs.stat(userAvatarFilePath);
 
+            if (userAvatarFileExists) {
                 await fs.unlink(userAvatarFilePath);
-            } catch (error) {
-                throw new AppError('Error removing avatar file:');
             }
-
-            user.avatar = avatarFilename;
-
-            await UserRepository.save(user);
-
-            return user;
         }
+        user.avatar = avatarFilename;
+
+        await UserRepository.save(user);
+
+        return user;
     },
 };
 

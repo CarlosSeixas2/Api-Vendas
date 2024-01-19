@@ -7,7 +7,7 @@ const UsersController = {
         try {
             const users = await ListUserService.execute();
 
-            console.log(req.user.id);
+            // console.log(req.user.id);
 
             return res.json(users);
         } catch (error: any) {
@@ -19,13 +19,12 @@ const UsersController = {
 
     async create(req: Request, res: Response): Promise<Response> {
         try {
-            const { name, email, password, avatar } = req.body;
+            const { name, email, password } = req.body;
 
             const user = await CreateUserService.execute({
                 name,
                 email,
                 password,
-                avatar,
             });
 
             return res.json(user);
