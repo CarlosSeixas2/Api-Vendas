@@ -1,23 +1,43 @@
-# npm i typescript ts-node-dev @types/node -D
+## Instalação
 
-# npx tsc --init --rootDir src --outDir build \ --esModuleInterop --resolveJsonModule --lib es6 \ --module commonjs --allowJs true --noImplicitAny true
+1- Instale as dependências
 
-# npm add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```bash
+  npm install
+```
 
-# npm add eslint-config-prettier@6.15.0 eslint-plugin-prettier@3.2.0 -D
+2- Iniciar o projeto
 
-# npm i express cors express-async-errors
+```bash
+  npm run dev
+```
 
-# npm add -D @types/express @types/cors
+## Comandos Typeorm
 
-# npm install tsconfig-paths --save-dev
+1- Criar Migration
 
-# npm add -D typeorm reflect-metadata pg
+```bash
+  npx typeorm migration:create ./src/shared/typeorm/migrations/Nome_da_Migration
+```
 
-# typeorm migration:create -n nome_da_migration
+-   ou você pode usar o meu criador automatico de migration basta executar esse comando
 
-# npx typeorm migration:create ./src/shared/typeorm/migrations/CreateProducts
+```bash
+  node CreateMigration.js Nome_da_Migrate
+```
 
-# npx typeorm-ts-node-commonjs migration:run -d ./src/shared/typeorm/index.ts
+2- Iniciando as Migrations
 
-# npx typeorm-ts-node-commonjs migration:revert -d ./src/shared/typeorm/index.ts
+```bash
+  npx typeorm-ts-node-commonjs migration:run -d ./src/shared/typeorm/index.ts
+```
+
+3- Resetando as Migrations
+
+```bash
+  npx typeorm-ts-node-commonjs migration:revert -d ./src/shared/typeorm/index.ts
+```
+
+## Autor
+
+-   [@Carlos Seixas](https://www.github.com/carlosseixas2)
