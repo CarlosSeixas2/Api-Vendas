@@ -11,10 +11,7 @@ interface IRequest {
 }
 
 const UpdateUserAvatarService = {
-    async execute({
-        user_id,
-        avatarFilename,
-    }: IRequest): Promise<User | undefined> {
+    async execute({ user_id, avatarFilename }: IRequest): Promise<User> {
         const user = await UserRepository.findById(user_id);
 
         if (!user) {
