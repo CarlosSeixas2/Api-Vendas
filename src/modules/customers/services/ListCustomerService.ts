@@ -1,4 +1,4 @@
-import Customer from '../typeorm/entities/customers';
+import Customer from '../typeorm/entities/Customers';
 import { CustomersRepository } from '../typeorm/repositories/CustomersRepository';
 
 const ListCustomerService = {
