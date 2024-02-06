@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import ListUserService from '../services/ListUserService';
 import CreateUserService from '../services/CreateUserService';
+import { instanceToPlain } from 'class-transformer';
 
 const UsersController = {
     async index(req: Request, res: Response): Promise<Response> {
@@ -9,7 +10,7 @@ const UsersController = {
 
             // console.log(req.user.id);
 
-            return res.json(users);
+            return res.json(instanceToPlain(users));
         } catch (error: any) {
             return res
                 .status(error.statusCode || 400)
@@ -27,7 +28,8 @@ const UsersController = {
                 password,
             });
 
-            return res.json(user);
+            // return res.json(user);
+            return res.json(instanceToPlain(user));
         } catch (error: any) {
             return res
                 .status(error.statusCode || 400)

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
+import { instanceToPlain } from 'class-transformer';
 
 const UserAvatarController = {
     async update(req: Request, res: Response): Promise<Response> {
@@ -13,7 +14,7 @@ const UserAvatarController = {
                 avatarFilename: req.file.filename,
             });
 
-            return res.json(user);
+            return res.json(instanceToPlain(user));
         } catch (error: any) {
             return res
                 .status(error.statusCode || 400)

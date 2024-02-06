@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import CreateSessionsService from '../services/CreateSessionsService';
+import { instanceToPlain } from 'class-transformer';
 
 const SessionsController = {
     async create(req: Request, res: Response): Promise<Response> {
@@ -10,7 +11,7 @@ const SessionsController = {
                 password,
             });
 
-            return res.json(user);
+            return res.json(instanceToPlain(user));
         } catch (error: any) {
             return res
                 .status(error.statusCode || 400)

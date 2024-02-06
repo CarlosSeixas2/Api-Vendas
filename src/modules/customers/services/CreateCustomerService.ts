@@ -1,5 +1,5 @@
 import AppError from '@shared/errors/AppError';
-import { hash } from 'bcryptjs';
+// import { hash } from 'bcryptjs';
 import Customer from '../typeorm/entities/Customers';
 import { CustomersRepository } from '../typeorm/repositories/CustomersRepository';
 

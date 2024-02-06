@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import ShowProfileService from '../services/ShowProfileService';
 import UpdateProfileService from '../services/UpdateProfileService';
+import { instanceToPlain } from 'class-transformer';
 
 const ProfileController = {
     async show(req: Request, res: Response): Promise<Response> {
@@ -9,7 +10,7 @@ const ProfileController = {
 
             const users = await ShowProfileService.execute({ user_id });
 
-            return res.json(users);
+            return res.json(instanceToPlain(users));
         } catch (error: any) {
             return res
                 .status(error.statusCode || 400)
@@ -30,7 +31,7 @@ const ProfileController = {
                 old_password,
             });
 
-            return res.json(user);
+            return res.json(instanceToPlain(user));
         } catch (error: any) {
             return res
                 .status(error.statusCode || 400)
