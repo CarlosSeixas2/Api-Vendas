@@ -48,6 +48,7 @@
         "jsonwebtoken": "^9.0.2",
         "multer": "^1.4.5-lts.1",
         "nodemailer": "^6.9.8",
+        "rate-limiter-flexible": "^4.0.1",
         "redis": "^3.1.2",
         "typeorm-pagination": "^2.0.3"
     }
